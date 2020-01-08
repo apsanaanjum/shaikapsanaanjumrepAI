@@ -1,0 +1,33 @@
+<!-- Table -->
+<div class="table">
+    <p-table [value]="response">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Title</th>
+                <th colspan="4">URL</th>
+                <th>Created At</th>
+                <th>Author</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tabdata>
+            <tr (click)="showmodaldata(tabdata)">
+                <td>{{tabdata.title}}</td>
+                <td colspan="4">{{tabdata.url}}</td>
+                <td>{{tabdata.created_at}}</td>
+                <td>{{tabdata.author}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<!-- Modal -->
+<p-dialog [(visible)]="display" modal="true" [dismissableMask]="true" [style]="{width : '400px'}">
+    <p-header>
+        JSON Data
+    </p-header>
+    {{popdata|json}}
+    <p-footer>
+        <button pButton type="button" label="Primary" (click)="close()">Close</button>
+    </p-footer>
+</p-dialog>
